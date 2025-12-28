@@ -1,0 +1,11 @@
+Name : GithUb Actions Workflow
+on: workflow-dispatch
+branches:
+  - "*"
+jobs:
+    runs-on: ubuntu
+    steps:
+      - name: Install Python
+        run: |
+          sudo pip install python
+          sudo pip install pandas
