@@ -2,6 +2,11 @@ name: Matrix Strategy Implementation
 
 on:
   workflow_dispatch:
+    inputs:
+      python_versions:
+        description: 'Comma-separated Python versions'
+        required: true
+        default: '3.10,3.11,3.12,3.13,3.14'
 
 jobs:
   setup-python:
@@ -10,11 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version:
-          - '3.9'
-          - '3.10'
-          - '3.11'
-          - '3.12'
+        python-version: ${{ split(github.event.inputs.python_versions, ',') }}
 
     steps:
       - name: Checkout repository
