@@ -6,7 +6,7 @@ on:
       python_versions:
         description: 'Comma-separated Python versions'
         required: true
-        default: '3.10,3.11,3.12'
+        default: '["3.10","3.11","3.12"]'
 
 jobs:
   setup-python:
