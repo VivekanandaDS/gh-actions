@@ -12,6 +12,8 @@ on:
           - '3.10'
           - '3.11'
           - '3.12'
+      docker-app-name: 
+        description: "Docker Image app name"
       image_tag:
         description: "Docker image tag (e.g. v1.0.0, commit-sha, latest)"
         required: true
@@ -46,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      IMAGE_NAME: my-app
+      IMAGE_NAME: ${{ github.event.inputs.docker-app-name }}
       IMAGE_TAG: ${{ github.event.inputs.image_tag }}
 
     steps:
@@ -58,10 +60,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build \
-            --progress=plain \
-            -t $IMAGE_NAME:$IMAGE_TAG \
-            .
+          docker build -t $IMAGE_NAME:$IMAGE_TAG .
 
       - name: Echo built Docker image
         run: |
