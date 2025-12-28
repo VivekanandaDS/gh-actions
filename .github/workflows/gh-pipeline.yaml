@@ -1,11 +1,40 @@
-Name : GithUb Actions Workflow
-on: workflow_dispatch
-branches:
-  - "*"
+name: Manual Python Setup
+
+on:
+  workflow_dispatch:
+    inputs:
+      python_version:
+        description: 'Python version'
+        type: choice
+        required: true
+        options:
+          - '3.9'
+          - '3.10'
+          - '3.11'
+          - '3.12'
+
 jobs:
-    runs-on: ubuntu
+  setup-python:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Install Python
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ github.event.inputs.python_version }}
+
+      - name: Upgrade pip
         run: |
-          sudo pip install python
-          sudo pip install pandas
+          python -m pip install --upgrade pip
+  
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Verify Python installation
+        run: |
+          python --version
+          which python

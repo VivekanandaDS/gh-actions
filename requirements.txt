@@ -1,0 +1,14 @@
+# Core utilities
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Data handling
+pandas>=2.1.0
+numpy>=1.26.0
+
+# Logging
+loguru>=0.7.2
+
+# Testing (optional, usually for CI)
+pytest>=7.4.0
+pytest-cov>=4.1.0
