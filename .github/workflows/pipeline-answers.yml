@@ -1,0 +1,22 @@
+name: Github Action Answers
+
+on:
+  push:
+    branches: *
+    # workflow_dispatch:
+    #     inputs:
+    #         your_name:
+    #             description: Enter your Name
+    #             default: Student
+jobs:
+    says-hello:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v4
+
+          - name: Print
+            run: echo "Hello ${{ github.event.inputs.your_name }} Welcome to GitHub Actions!"
+        
+
+

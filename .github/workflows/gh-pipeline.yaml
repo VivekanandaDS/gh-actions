@@ -64,5 +64,5 @@ jobs:
 
       - name: Echo built Docker image
         run: |
-          echo "Docker image built successfully:"
+          echo "Docker image built successfully"
           echo "$IMAGE_NAME:$IMAGE_TAG"
