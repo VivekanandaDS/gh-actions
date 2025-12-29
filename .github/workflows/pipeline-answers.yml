@@ -8,7 +8,7 @@ on:
     #     inputs:
     #         your_name:
     #             description: Enter your Name
-    #             default: Student 
+    #             default: Student  
 jobs:
     says-hello:
         runs-on: ubuntu-latest
