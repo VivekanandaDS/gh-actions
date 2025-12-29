@@ -2,7 +2,8 @@ name: Github Action Answers
 
 on:
   push:
-    branches: *
+    branches:
+      - "*"
     # workflow_dispatch:
     #     inputs:
     #         your_name:
