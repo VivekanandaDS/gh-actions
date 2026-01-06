@@ -1,0 +1,17 @@
+name: Build and Test
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        required: true
+        type: string
+    outputs:
+      build_ok:
+        value: ${{ jobs.ci.outputs.success }}
+
+jobs:
+  ci:
+    uses: gh-actions/workflows/.github/workflows/python-ci.yml
+    with:
+      python-version: ${{ inputs.python-version }}

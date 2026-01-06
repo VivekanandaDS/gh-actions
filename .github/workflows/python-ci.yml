@@ -1,0 +1,27 @@
+name: Python CI
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        required: true
+        type: string
+    outputs:
+      success:
+        value: ${{ jobs.test.outputs.success }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    outputs:
+      success: ${{ steps.result.outputs.ok }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python-version }}
+
+      - id: result
+        run: |
+          echo "ok=true" >> $GITHUB_OUTPUT

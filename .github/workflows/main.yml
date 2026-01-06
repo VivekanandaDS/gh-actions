@@ -1,0 +1,15 @@
+name: Main Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      python-version:
+        description: "Enter the Python version you need to install"
+        required: true
+        type: string
+
+jobs:
+  pipeline:
+    uses: ./.github/workflows/build-and-test.yml
+    with:
+      python-version: ${{ inputs.python-version }}
